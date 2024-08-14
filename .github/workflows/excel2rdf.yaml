@@ -33,7 +33,7 @@ jobs:
           for watched_file in "${watched_files[@]}"; do
             if [[ $file == *"$watched_file"* ]]; then
               echo file
-              curl -X POST -H 'Content-type: application/json' --data '{"text":"File changed: '"$file"' "}' $SKOSPlay_URL
+              #curl -X POST -H 'Content-type: application/json' --data '{"text":"File changed: '"$file"' "}' $SKOSPlay_URL
             fi
           done
         done
