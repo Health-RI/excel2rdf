@@ -21,3 +21,7 @@ jobs:
         SKOSPlay_URL: https://skos-play.sparna.fr/play/excel_test/excel2skos-exemple-1.xlsx
       run:
         echo $SKOSPlay_URL
+        changed_files=$(git diff --name-only -r HEAD^1 HEAD)
+        for file in $changed_files; do
+          echo $file
+        done
