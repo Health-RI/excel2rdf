@@ -22,6 +22,6 @@ jobs:
       run:
         echo $SKOSPlay_URL
         changed_files=$(git diff --name-only -r HEAD^1 HEAD)
-        for file in $changed_files; do
+        for file in $changed_files
           echo $file
         done
