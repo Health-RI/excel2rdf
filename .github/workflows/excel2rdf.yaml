@@ -19,21 +19,5 @@ jobs:
       id: check-and-alert
       env:
         SKOSPlay_URL: https://skos-play.sparna.fr/play/excel_test/excel2skos-exemple-1.xlsx
-      run: 
-        # Define the list of filenames to watch for changes
-
-        #watched_files=("**.xlsx" "**.xls")
-        #if [[ ${{ github.event_name }} == 'pull_request' ]]; then
-        changed_files=$(git diff --name-only -r HEAD^1 HEAD)
-        #else
-        #  changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }})
-        #fi
-        echo SKOSPlay_URL
-        for file in $changed_files; do
-          for watched_file in "${watched_files[@]}"; do
-            if [[ $file == *"$watched_file"* ]]; then
-              echo file
-              #curl -X POST -H 'Content-type: application/json' --data '{"text":"File changed: '"$file"' "}' $SKOSPlay_URL
-            fi
-          done
-        done
+      run:
+        echo $SKOSPlay_URL
