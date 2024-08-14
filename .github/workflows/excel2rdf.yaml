@@ -28,9 +28,11 @@ jobs:
         #else
         #  changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }})
         #fi
+        print SKOSPlay_URL
         for file in $changed_files; do
           for watched_file in "${watched_files[@]}"; do
             if [[ $file == *"$watched_file"* ]]; then
+              print file
               curl -X POST -H 'Content-type: application/json' --data '{"text":"File changed: '"$file"' "}' $SKOSPlay_URL
             fi
           done
