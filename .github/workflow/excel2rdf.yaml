@@ -13,7 +13,7 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.9' 
-      -name: Install dependencies
-       run: pip install -r requirements.txt
-      -name: Run convert script
-       run: python excel2rdf.py
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run convert script
+        run: python excel2rdf.py
