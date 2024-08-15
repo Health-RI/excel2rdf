@@ -20,9 +20,9 @@ jobs:
       env:
         SKOSPlay_URL: https://xls2rdf.sparna.fr/rest/convert        
       run:
-        echo $SKOSPlay_URL
-        echo ${{github.workspace}}
-        echo ${{github.path}}
+        #echo $SKOSPlay_URL
+        #echo ${{github.workspace}}
+        #echo ${{github.path}}
         changed_files=$(git diff --name-only -r HEAD^1 HEAD)
         for file in $changed_files
           cmd = $SKOSPlay_URL?url=https://raw.githubusercontent.com/${{github.repository}}/main/$file&noPostprocessings=true
