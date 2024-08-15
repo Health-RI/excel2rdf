@@ -18,10 +18,13 @@ jobs:
     - name: Check and Alert if watched files changed
       id: check-and-alert
       env:
-        SKOSPlay_URL: https://skos-play.sparna.fr/play/excel_test/excel2skos-exemple-1.xlsx
+        SKOSPlay_URL: https://xls2rdf.sparna.fr/rest/convert        
       run:
         echo $SKOSPlay_URL
+        echo ${{github.workspace}}
         changed_files=$(git diff --name-only -r HEAD^1 HEAD)
         for file in $changed_files
-          echo $file
+          cmd = $SKOSPlay_URL$file
+          echo $cmd
+          curl cmd
         done
