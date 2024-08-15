@@ -22,6 +22,8 @@ jobs:
       run:
         echo $SKOSPlay_URL
         echo ${{github.workspace}}
+        echo ${{github.path}}
+        echo ${{github.server_url}}
         changed_files=$(git diff --name-only -r HEAD^1 HEAD)
         for file in $changed_files
           cmd = $SKOSPlay_URL$file
