@@ -17,8 +17,8 @@ jobs:
 
     - name: Check and Alert if watched files changed
       id: check-and-alert
-      env:
-        SKOSPlay_URL: https://xls2rdf.sparna.fr/rest/convert        
+      #env:
+      #  SKOSPlay_URL: https://xls2rdf.sparna.fr/rest/convert        
       run:
         #echo $SKOSPlay_URL
         #echo ${{github.workspace}}
