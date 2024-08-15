@@ -1,0 +1,133 @@
+@prefix schema: <http://schema.org/> .
+@prefix c3potreat: <http://www.elzeard.co/ontologies/c3po/treatment#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skosthes: <http://purl.org/iso25964/skos-thes#> .
+@prefix config-core: <http://data.sparna.fr/ontologies/sparnatural-config-core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix config-datasources: <http://data.sparna.fr/ontologies/sparnatural-config-datasources#> .
+@prefix c3poplant: <http://www.elzeard.co/ontologies/c3po/plant#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix c3povoc: <http://www.elzeard.co/ontologies/c3po/vocabulary#> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix euvoc: <http://publications.europa.eu/ontology/euvoc#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix xls2rdf: <https://xls2rdf.sparna.fr/vocabulary#> .
+@prefix this: <http://sparnatural.eu/demos/demo-elzeard/ontology/> .
+@prefix c3poparam: <http://www.elzeard.co/ontologies/c3po/parameter#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+
+<http://sparnatural.eu/demos/demo-elzeard/ontology> a owl:Ontology;
+  owl:imports <http://data.sparna.fr/ontologies/sparnatural-config-core>, <http://data.sparna.fr/ontologies/sparnatural-config-datasources>;
+  rdfs:seeAlso <https://docs.google.com/spreadsheets/d/1S5K7cl-8-JFyqnCZP2pVhI3-E4IK0XgCPElkr657jJg/export?format=xlsx>,
+    <http://xls2rdf.sparna.fr/rest/convert?url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1S5K7cl-8-JFyqnCZP2pVhI3-E4IK0XgCPElkr657jJg%2Fexport%3Fformat%3Dxlsx&noPostProcessings=true>,
+    <https://app.diagrams.net/#G1KG7GdM4n-7S8L4Tm6nMZQylUVirMrTAl> .
+
+c3poplant:CultivatedPlant a owl:Class;
+  rdfs:subClassOf config-core:SparnaturalClass;
+  rdfs:label "Plante cultivée"@fr, "Cultivated plant"@en;
+  config-core:faIcon "fa-thin fa-hand-holding-seedling" .
+
+c3povoc:NutritionalRequirement a owl:Class;
+  rdfs:subClassOf config-core:SparnaturalClass;
+  rdfs:label "Nutrition"@fr, "Nutritional Requirement"@en;
+  config-core:faIcon "fa-thin fa-arrow-trend-up";
+  config-core:sparqlString "skos:Concept; skos:broader <http://www.elzeard.co/ontologies/c3po/vocabulary#NutritionalRequirement>" .
+
+c3poplant:BotanicalFamily a owl:Class;
+  rdfs:subClassOf config-core:SparnaturalClass;
+  rdfs:label "Famille botanique"@fr, "Botanic family"@en;
+  config-core:faIcon "fa-thin fa-clipboard-list" .
+
+c3poplant:UsageFamily a owl:Class;
+  rdfs:subClassOf config-core:SparnaturalClass;
+  rdfs:label "Famille d'usage"@fr, "Usage family"@en;
+  config-core:faIcon "fa-thin fa-clipboard-list" .
+
+c3povoc:RootDepth a owl:Class;
+  rdfs:subClassOf config-core:SparnaturalClass;
+  rdfs:label "Profondeur des racines"@fr, "Root Depth"@en;
+  config-core:faIcon "fa-thin fa-clipboard-list";
+  config-core:sparqlString "skos:Concept; skos:broader <http://www.elzeard.co/ontologies/c3po/vocabulary#RootDepth>" .
+
+c3povoc:CleansingLevel a owl:Class;
+  rdfs:subClassOf config-core:SparnaturalClass;
+  rdfs:label "Niveau de nettoyage"@fr, "Cleansing Level"@en;
+  config-core:faIcon "fa-thin fa-clipboard-list";
+  config-core:sparqlString "skos:Concept; skos:broader <http://www.elzeard.co/ontologies/c3po/vocabulary#CleansingLevel>" .
+
+c3poplant:needsNutrition a owl:ObjectProperty;
+  rdfs:label "nutrition"@fr, "needs nutrition"@en;
+  rdfs:subPropertyOf config-core:ListProperty;
+  rdfs:domain c3poplant:CultivatedPlant;
+  rdfs:range c3povoc:NutritionalRequirement;
+  config-datasources:datasource config-datasources:list_skospreflabel_alpha .
+
+c3poplant:belongsToBotanicalFamily a owl:ObjectProperty;
+  rdfs:label "famille botanique"@fr, "botanic family"@en;
+  rdfs:subPropertyOf config-core:ListProperty;
+  rdfs:domain c3poplant:CultivatedPlant;
+  rdfs:range c3poplant:BotanicalFamily;
+  config-datasources:datasource config-datasources:list_skospreflabel_alpha .
+
+c3poplant:belongsToUsageFamily a owl:ObjectProperty;
+  rdfs:label "usage"@fr, "belongs to usage family"@en;
+  rdfs:subPropertyOf config-core:ListProperty;
+  rdfs:domain c3poplant:CultivatedPlant;
+  rdfs:range c3poplant:UsageFamily;
+  config-datasources:datasource config-datasources:list_skospreflabel_alpha .
+
+c3poplant:takesRoot a owl:ObjectProperty;
+  rdfs:label "profondeur racinaire"@fr, "takes root"@en;
+  rdfs:subPropertyOf config-core:ListProperty;
+  rdfs:domain c3poplant:CultivatedPlant;
+  rdfs:range c3povoc:RootDepth;
+  config-datasources:datasource config-datasources:list_skospreflabel_alpha .
+
+c3poplant:hasCleansingTrait a owl:ObjectProperty;
+  rdfs:label "nettoyage"@fr, "has cleansing trait"@en;
+  rdfs:subPropertyOf config-core:ListProperty;
+  rdfs:domain c3poplant:CultivatedPlant;
+  rdfs:range c3povoc:CleansingLevel;
+  config-datasources:datasource config-datasources:list_skospreflabel_alpha .
+
+c3poplant:aMettreAvant a owl:ObjectProperty;
+  rdfs:label "à mettre avant"@fr, "cultivate before"@en;
+  rdfs:subPropertyOf config-core:AutocompleteProperty;
+  rdfs:domain c3poplant:CultivatedPlant;
+  rdfs:range c3poplant:CultivatedPlant;
+  config-datasources:datasource config-datasources:search_rdfslabel_contains;
+  config-core:sparqlString "^<http://www.elzeard.co/ontologies/c3po/plant#hasPositivePreceding>/^<http://www.elzeard.co/ontologies/c3po/plant#hasRotation>" .
+
+c3poplant:aNePasMettreAvant a owl:ObjectProperty;
+  rdfs:label "à ne pas mettre avant"@fr, "do not cultivate before"@en;
+  rdfs:subPropertyOf config-core:AutocompleteProperty;
+  rdfs:domain c3poplant:CultivatedPlant;
+  rdfs:range c3poplant:CultivatedPlant;
+  config-datasources:datasource config-datasources:search_rdfslabel_contains;
+  config-core:sparqlString "^<http://www.elzeard.co/ontologies/c3po/plant#hasNegativePreceding>/^<http://www.elzeard.co/ontologies/c3po/plant#hasRotation>" .
+
+c3poplant:aMettreApres a owl:ObjectProperty;
+  rdfs:label "à mettre après"@fr, "cultivate after"@en;
+  rdfs:subPropertyOf config-core:AutocompleteProperty;
+  rdfs:domain c3poplant:CultivatedPlant;
+  rdfs:range c3poplant:CultivatedPlant;
+  config-datasources:datasource config-datasources:search_rdfslabel_contains;
+  config-core:sparqlString "<http://www.elzeard.co/ontologies/c3po/plant#hasRotation>/<http://www.elzeard.co/ontologies/c3po/plant#hasPositivePreceding>" .
+
+c3poplant:aNePasMettreApres a owl:ObjectProperty;
+  rdfs:label "à ne pas mettre après"@fr, "do not cultivate after"@en;
+  rdfs:subPropertyOf config-core:AutocompleteProperty;
+  rdfs:domain c3poplant:CultivatedPlant;
+  rdfs:range c3poplant:CultivatedPlant;
+  config-datasources:datasource config-datasources:search_rdfslabel_contains;
+  config-core:sparqlString "<http://www.elzeard.co/ontologies/c3po/plant#hasRotation>/<http://www.elzeard.co/ontologies/c3po/plant#hasNegativePreceding>" .
