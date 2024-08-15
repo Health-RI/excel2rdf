@@ -23,9 +23,10 @@ jobs:
         echo $SKOSPlay_URL
         echo ${{github.workspace}}
         echo ${{github.path}}
-        echo ${{github.server_url}}
+        #cmd = https://raw.githubusercontent.com/Health-RI/${{github.repository}}/main/${{file}}
         changed_files=$(git diff --name-only -r HEAD^1 HEAD)
         for file in $changed_files
+          cmd = https://raw.githubusercontent.com/Health-RI/${{github.repository}}/main/${{file}}
           cmd = $SKOSPlay_URL$file
           echo $cmd
           curl cmd
