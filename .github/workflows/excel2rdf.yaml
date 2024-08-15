@@ -26,6 +26,6 @@ jobs:
         changed_files=$(git diff --name-only -r HEAD^1 HEAD)
         for file in $changed_files
           cmd = "https://xls2rdf.sparna.fr/rest/convert?url=https://raw.githubusercontent.com/${{github.repository}}/main/$file&noPostprocessings=true"
-          echo $cmd
-          curl cmd
+          echo “$cmd"
+          curl "$cmd"
         done
