@@ -30,7 +30,7 @@ jobs:
           #python script.py
           echo $file
           echo "$file was"
-          cmd = "https://xls2rdf.sparna.fr/rest/convert?url=https://raw.githubusercontent.com/${{github.repository}}/main/$file&noPostprocessings=true"
+          cmd="https://xls2rdf.sparna.fr/rest/convert?url=https://raw.githubusercontent.com/${{github.repository}}/main/$file&noPostprocessings=true"
           echo $cmd
           curl $cmd
         done
