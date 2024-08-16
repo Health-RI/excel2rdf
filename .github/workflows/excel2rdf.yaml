@@ -25,7 +25,7 @@ jobs:
         #echo ${{github.workspace}}
         #echo ${{github.path}}
         #changed_files=$(git diff --name-only -r HEAD^1 HEAD)
-        changed_files=$(git diff --diff-filter='A' --name-only ${{ github.event.after }} ${{ github.event.before }})
+        changed_files=$(git diff --diff-filter=A --name-only ${{ github.event.after }} ${{ github.event.before }})
 
         for file in ${changed_files[@]} 
         do
