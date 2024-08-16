@@ -4,7 +4,7 @@ on:
       branches:
         - main
       paths:
-        - '<folder>/*.xlsx'
+        - '*.xlsx'
 jobs:
   excel2rdf:
     runs-on: ubuntu-latest
