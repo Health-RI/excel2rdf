@@ -19,7 +19,7 @@ jobs:
       id: check-and-alert
       env:
         SKOSPlay_URL: https://xls2rdf.sparna.fr/rest/convert        
-      run: !
+      run: |
         #python script.py
         #echo $SKOSPlay_URL
         #echo ${{github.workspace}}
