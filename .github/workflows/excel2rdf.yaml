@@ -20,14 +20,17 @@ jobs:
       env:
         SKOSPlay_URL: https://xls2rdf.sparna.fr/rest/convert        
       run: !
-        echo $SKOSPlay_URL
-        echo ${{github.workspace}}
-        echo ${{github.path}}
+        #python script.py
+        #echo $SKOSPlay_URL
+        #echo ${{github.workspace}}
+        #echo ${{github.path}}
         changed_files=$(git diff --name-only -r HEAD^1 HEAD)
-        for file in ${changed_files[@]}; do
+        for file in ${changed_files[@]} 
+        do
+          #python script.py
           echo $file
           echo "$file was"
-          cmd = "https://xls2rdf.sparna.fr/rest/convert?url=https://raw.githubusercontent.com/${{github.repository}}/main/$file&noPostprocessings=true"
-          echo $cmd
-          curl $cmd
+        #  cmd = "https://xls2rdf.sparna.fr/rest/convert?url=https://raw.githubusercontent.com/${{github.repository}}/main/$file&noPostprocessings=true"
+        #  echo $cmd
+        #  curl $cmd
         done
