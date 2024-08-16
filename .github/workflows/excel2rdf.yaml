@@ -4,7 +4,7 @@ on:
       branches:
         - main
       paths:
-        - '**.xlsx'
+        - <folder>/*.xlsx
 jobs:
   excel2rdf:
     runs-on: ubuntu-latest
@@ -24,7 +24,9 @@ jobs:
         #echo $SKOSPlay_URL
         #echo ${{github.workspace}}
         #echo ${{github.path}}
-        changed_files=$(git diff --name-only -r HEAD^1 HEAD)
+        #changed_files=$(git diff --name-only -r HEAD^1 HEAD)
+        changed_files=$(git diff --name-only ${{ github.event.after }} ${{ github.event.before }})
+
         for file in ${changed_files[@]} 
         do
           #python script.py
