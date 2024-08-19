@@ -1,4 +1,4 @@
-name: Excel2RDF
+name: xls2rdf
 on:
     push:
       branches:
@@ -21,18 +21,18 @@ jobs:
     - name: Setup Java
       uses: actions/setup-java@v4
       with:
-            java-version: '21'
-            distribution: 'temurin'
+        java-version: '21'
+        distribution: 'temurin'
     - name: Download xls2rdf
       run: curl -L https://github.com/sparna-git/xls2rdf/releases/download/2.2.0/xls2rdf-app-2.2.0-onejar.jar -o xls2rdf.jar
-    - name: Convert excel to RDF
+    - name: Convert Excel to RDF
       run: |
-        find ./metadata/ -type f -name "*.xlsx" -exec sh -c '
+        find $GITHUB_WORKSPACE/metadata/ -type f -name "*.xlsx" -exec sh -c '
         base_name=$(basename "$0" .xlsx)
-        java -jar xls2rdf.jar convert -i "$0" -np -o "./turtle/$base_name.ttl"
+        java -jar xls2rdf.jar convert -i "$0" -np -o "$GITHUB_WORKSPACE/turtle/$base_name.ttl"
         ' {} \;
     - name: Commit the new turtle files
       uses: EndBug/add-and-commit@v9
       with:
         add: 'turtle -A'
-        message: 'Generate turtle files from Excel'
+        message: 'ci: generate turtle files from Excel'
