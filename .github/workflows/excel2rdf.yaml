@@ -5,34 +5,34 @@ on:
         - main
       paths:
         - 'metadata/*.xlsx'
+    pull_request:
+      paths:
+        - 'metadata/*.xlsx'
 jobs:
   excel2rdf:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
-        fetch-depth: ${{ github.event_name == 'pull_request' && 2 || 0 }}
-
-    - name: Check and Alert if watched files changed
-      id: check-and-alert
-      env:
-        SKOSPlay_URL: https://xls2rdf.sparna.fr/rest/convert        
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        ref: ${{ github.event.pull_request.head.ref }}
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+            java-version: '21'
+            distribution: 'temurin'
+    - name: Download xls2rdf
+      run: curl -L https://github.com/sparna-git/xls2rdf/releases/download/2.2.0/xls2rdf-app-2.2.0-onejar.jar -o xls2rdf.jar
+    - name: Convert excel to RDF
       run: |
-        #python script.py
-        #echo $SKOSPlay_URL
-        #echo ${{github.workspace}}
-        #echo ${{github.path}}
-        #changed_files=$(git diff --name-only -r HEAD^1 HEAD)
-        changed_files=$(git diff master --diff-filter=a --name-only ${{ github.event.after }} ${{ github.event.before }})
-
-        for file in ${changed_files[@]} 
-        do
-          #python script.py
-          echo $file
-          echo "$file was"
-          cmd="https://xls2rdf.sparna.fr/rest/convert?url=https://raw.githubusercontent.com/${{github.repository}}/main/$file&noPostprocessings=true"
-          echo $cmd
-          curl $cmd
-        done
+        find ./metadata/ -type f -name "*.xlsx" -exec sh -c '
+        base_name=$(basename "$0" .xlsx)
+        java -jar xls2rdf.jar convert -i "$0" -np -o "./turtle/$base_name.ttl"
+        ' {} \;
+    - name: Commit the new turtle files
+      uses: EndBug/add-and-commit@v9
+      with:
+        add: 'turtle -A'
+        message: 'Generate turtle files from Excel'
