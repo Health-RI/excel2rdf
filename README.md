@@ -1,7 +1,16 @@
-# excel2rdf
-A workflow to generate ttl file using a metadata schema (in csv format) as input. 
+## Introduction
+**excel2rdf** is a workflow designed to generate a Turtle (.ttl) file from a metadata schema provided in CSV format.
 
-Requirements:
-Basic knowledge of using Git commit (via cmd line or Github desktop)
+## Target Audience
+The current primary users are within Health RI.
 
-When a metadata schema (csv file) is pushed to the metadata folder, the workflow starts to transfer it into schacl shape by calling [SKOS play API](https://xls2rdf.sparna.fr/rest/). The output ttl is stored into turtle folder.
+## Requirements
+Basic familiarity with Git, including committing via the command line or GitHub Desktop.
+
+## How to Use
+When a metadata schema (CSV file) is pushed to the `metadata` folder, the workflow automatically converts it into a SHACL shape by utilizing the [SKOS Play API](https://xls2rdf.sparna.fr/rest/). The resulting Turtle (.ttl) file is saved in the `turtle` folder.
+
+### CSV File Template
+A template for the metadata schema is currently under discussion.
+
+---
