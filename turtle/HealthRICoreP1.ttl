@@ -1,9 +1,11 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.health-ri.nl/core/p1/DatasetService> dct:description "DatasetService";
+<http://data.health-ri.nl/core/p1/DatasetService> a sh:NodeShape;
+  dct:description "DatasetService";
   dct:title "DatasetService" .
 
 dcat:endpointURL <dash:Viewer> "dash:URIViewer";
