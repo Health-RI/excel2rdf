@@ -4,9 +4,10 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.health-ri.nl/core/p1/DatasetService> a sh:NodeShape;
+<http://data.health-ri.nl/core/p1/DatasetServiceShape> a sh:NodeShape;
   dct:description "DatasetService";
-  dct:title "DatasetService" .
+  dct:title "DatasetService";
+  sh:targetClass dcat:DataService .
 
 dcat:endpointURL <dash:Viewer> "dash:URIViewer";
   <dash:editor> "dash:URIEditor";
