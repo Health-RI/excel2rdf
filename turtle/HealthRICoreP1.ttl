@@ -6,25 +6,9 @@
 <http://data.health-ri.nl/core/p1> dct:description "HRI core metadata schema P1";
   dct:title "HRI core metadata schema" .
 
-dcat:endpointURL <dash:Viewer> "dash:URIViewer";
-  <dash:editor> "dash:URIEditor";
+sh:property <dash:Viewer> "dash:LiteralViewer", "dash:URIViewer";
+  <dash:editor> "dash:TextFieldEditor", "dash:URIEditor";
   sh:minCount "1";
   sh:name "Endpoint URL";
-  sh:nodeKind sh:IRI;
-  sh:path dcat:endpointURL .
-
-dct:title <dash:Viewer> "dash:LiteralViewer";
-  <dash:editor> "dash:TextFieldEditor";
-  sh:minCount "1";
-  sh:nodeKind sh:Literal;
-  sh:path dct:title .
-
-dcat:endpointDescription <dash:Viewer> "dash:URIViewer";
-  <dash:editor> "dash:URIEditor";
-  sh:nodeKind sh:IRI;
-  sh:path dcat:endpointDescription .
-
-dcat:servesDataset <dash:Viewer> "dash:URIViewer";
-  <dash:editor> "dash:URIEditor";
-  sh:nodeKind sh:IRI;
-  sh:path dcat:servesDataset .
+  sh:nodeKind sh:IRI, sh:Literal;
+  sh:path dct:title, dcat:endpointDescription, dcat:endpointURL, dcat:servesDataset .
