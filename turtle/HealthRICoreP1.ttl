@@ -6,9 +6,9 @@
 <http://data.health-ri.nl/core/p1> dct:description "HRI core metadata schema P1";
   dct:title "HRI core metadata schema" .
 
-dcat:DatasetServies <dash:Viewer> "dash:URIViewer";
-  <dash:editor> "dash:URIEditor";
+dcat:DatasetServies <dash:Viewer> "dash:LiteralViewer", "dash:URIViewer";
+  <dash:editor> "dash:TextFieldEditor", "dash:URIEditor";
   sh:minCount "1";
   sh:name "Endpoint URL";
-  sh:nodeKind sh:IRI;
-  sh:path dcat:endpointURL .
+  sh:nodeKind sh:IRI, sh:Literal;
+  sh:path dct:title, dcat:endpointDescription, dcat:endpointURL, dcat:servesDataset .
