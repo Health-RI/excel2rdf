@@ -3,12 +3,12 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.health-ri.nl/core/p1> dct:description "HRI core metadata schema P1";
-  dct:title "HRI core metadata schema" .
+<http://data.health-ri.nl/core/p1/DatasetService> dct:description "DatasetService";
+  dct:title "DatasetService" .
 
 sh:property <dash:Viewer> "dash:LiteralViewer", "dash:URIViewer";
   <dash:editor> "dash:TextFieldEditor", "dash:URIEditor";
-  sh:minCount "1";
+  sh:minCount "0", "1";
   sh:name "Endpoint URL";
   sh:nodeKind sh:IRI, sh:Literal;
   sh:path dct:title, dcat:endpointDescription, dcat:endpointURL, dcat:servesDataset .
