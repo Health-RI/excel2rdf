@@ -6,9 +6,27 @@
 <http://data.health-ri.nl/core/p1/DatasetService> dct:description "DatasetService";
   dct:title "DatasetService" .
 
-sh:property <dash:Viewer> "dash:LiteralViewer", "dash:URIViewer";
-  <dash:editor> "dash:TextFieldEditor", "dash:URIEditor";
-  sh:minCount "0", "1";
+dcat:endpointURL <dash:Viewer> "dash:URIViewer";
+  <dash:editor> "dash:URIEditor";
+  sh:minCount "1";
   sh:name "Endpoint URL";
-  sh:nodeKind sh:IRI, sh:Literal;
-  sh:path dct:title, dcat:endpointDescription, dcat:endpointURL, dcat:servesDataset .
+  sh:nodeKind sh:IRI;
+  sh:path dcat:endpointURL .
+
+dct:title <dash:Viewer> "dash:LiteralViewer";
+  <dash:editor> "dash:TextFieldEditor";
+  sh:minCount "1";
+  sh:nodeKind sh:Literal;
+  sh:path dct:title .
+
+dcat:endpointDescription <dash:Viewer> "dash:URIViewer";
+  <dash:editor> "dash:URIEditor";
+  sh:minCount "0";
+  sh:nodeKind sh:IRI;
+  sh:path dcat:endpointDescription .
+
+dcat:servesDataset <dash:Viewer> "dash:URIViewer";
+  <dash:editor> "dash:URIEditor";
+  sh:minCount "0";
+  sh:nodeKind sh:IRI;
+  sh:path dcat:servesDataset .
