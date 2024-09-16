@@ -1,0 +1,48 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.health-ri.nl/core/p1> dct:description "HRI core metadata schema P1";
+  dct:title "HRI core metadata schema" .
+
+dcat:DatasetServies <dash:Viewer> "dash:URIViewer";
+  <dash:editor> "dash:URIEditor";
+  sh:minCount "1";
+  sh:name "Endpoint URL";
+  sh:nodeKind sh:IRI;
+  sh:path dcat:endpointURL .
+
+<http://data.sparna.fr/vocabularies/days> dct:description "The days of the week";
+  dct:title "Weekdays" .
+
+<http://data.sparna.fr/vocabularies/days/monday> skos:definition "The day where you get back at work";
+  skos:notation "MON";
+  skos:prefLabel "Monday" .
+
+<http://data.sparna.fr/vocabularies/days/tuesday> skos:definition "The most productive day of the week.";
+  skos:notation "TUE";
+  skos:prefLabel "Tuesday" .
+
+<http://data.sparna.fr/vocabularies/days/wednesday> skos:notation "WED";
+  skos:prefLabel "Wednesday" .
+
+<http://data.sparna.fr/vocabularies/days/thursday> skos:notation "THU";
+  skos:prefLabel "Thursday" .
+
+<http://data.sparna.fr/vocabularies/days/friday> skos:definition "Week-end soon !";
+  skos:notation "FRI";
+  skos:prefLabel "Friday" .
+
+<http://data.sparna.fr/vocabularies/days/saturday> skos:notation "SAT";
+  skos:prefLabel "Saturday" .
+
+<http://data.sparna.fr/vocabularies/days/sunday> skos:definition "The day you sleep.";
+  skos:notation "SUN";
+  skos:prefLabel "Sunday" .
+
+<http://data.sparna.fr/vocabularies/days/week-end> skos:definition "Any day of the week-end";
+  skos:narrower <http://data.sparna.fr/vocabularies/days/saturday>, <http://data.sparna.fr/vocabularies/days/sunday>;
+  skos:notation "WKND";
+  skos:prefLabel "Week-end" .
