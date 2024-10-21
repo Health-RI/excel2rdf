@@ -15,4 +15,4 @@
   sh:minCount "1";
   sh:name "Endpoint URL";
   sh:nodeKind sh:IRI;
-  sh:path dcat:endpointURL .
+  sh:path <http://www.w3.org/ns/dcat#endpointURL]> .
