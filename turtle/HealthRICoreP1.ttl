@@ -10,7 +10,7 @@
   dct:title "DatasetService";
   sh:targetClass dcat:DataService .
 
-<http://www.w3.org/ns/shacl#property[> dash:Viewer dash:URIViewer;
+<http://www.w3.org/ns/shacl#property/[> dash:Viewer dash:URIViewer;
   dash:editor dash:URIEditor;
   sh:minCount "1";
   sh:name "Endpoint URL";
