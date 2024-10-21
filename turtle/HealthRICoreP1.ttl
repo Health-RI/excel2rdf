@@ -10,27 +10,9 @@
   dct:title "DatasetService";
   sh:targetClass dcat:DataService .
 
-dcat:endpointURL dash:Viewer dash:URIViewer;
+<http://www.w3.org/ns/shacl#property\u0020[> dash:Viewer dash:URIViewer;
   dash:editor dash:URIEditor;
   sh:minCount "1";
   sh:name "Endpoint URL";
   sh:nodeKind sh:IRI;
   sh:path dcat:endpointURL .
-
-dct:title dash:Viewer dash:LiteralViewer;
-  dash:editor dash:TextFieldEditor;
-  sh:minCount "1";
-  sh:nodeKind sh:Literal;
-  sh:path dct:title .
-
-dcat:endpointDescription dash:Viewer dash:URIViewer;
-  dash:editor dash:URIEditor;
-  sh:minCount "0";
-  sh:nodeKind sh:IRI;
-  sh:path dcat:endpointDescription .
-
-dcat:servesDataset dash:Viewer dash:URIViewer;
-  dash:editor dash:URIEditor;
-  sh:minCount "0";
-  sh:nodeKind sh:IRI;
-  sh:path dcat:servesDataset .
